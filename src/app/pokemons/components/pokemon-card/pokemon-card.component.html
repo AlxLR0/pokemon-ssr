@@ -1,14 +1,18 @@
-<div class="bg-blue-600 h-44 bg-opacity-25 rounded-lg shadow-md flex flex-col p-4 items-center justify-center cursor-pointer mb-3">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png" alt="PkemonImg" 
-    class="w-24 h-24"
-    width="96px" 
+<div
+  class="bg-gradient-to-br from-blue-500 to-indigo-600 h-44 rounded-2xl shadow-lg flex flex-col p-4 items-center justify-center cursor-pointer mb-3 
+         transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:from-indigo-500 hover:to-blue-600"
+>
+  <img
+    [src]="pokemonImage()"
+    [alt]="pokemon().name"
+    class="w-24 h-24 drop-shadow-lg transition-transform duration-300 hover:rotate-3"
+    width="96px"
     height="96px"
-    >
+  >
 
-    <div class="text-center mt-2">
-        <h2 class="text-xl font-bold text-white">{{pokemon().name}}</h2>
-        
-
-    </div>
-
+  <div class="text-center mt-2">
+    <h2 class="text-xl font-bold text-white tracking-wide drop-shadow-md">
+      {{pokemon().name}}
+    </h2>
+  </div>
 </div>
