@@ -57,6 +57,8 @@
           }
         </div>
 
+        
+
         <!-- Info básica -->
         <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 shadow-lg w-full max-w-sm text-center lg:text-left animate-slideUp transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:from-indigo-500 hover:to-blue-600">
           <p><strong>Altura:</strong> {{ (pokemon()!.height ?? 0) / 10 }} m</p>
@@ -89,6 +91,14 @@
             </div>
           }
         </div>
+
+        <!-- audio -->
+
+        @if (pokemon()!.cries.latest) {
+          <audio controls class="my-5">
+            <source [src]="pokemon()!.cries.latest" type="audio/wav">
+          </audio>
+        }
 
       </div>
     </div>
