@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SimplePokemon } from '../interfaces/simple-pokemon.interface';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { PokeAPIResponse } from '../interfaces/pokemon-api.response';
+import { Pokemon } from '../interfaces/pokemon.interface'; // 🔥 importar la interfaz correcta
 
 @Injectable({
   providedIn: 'root'
@@ -22,22 +23,23 @@ export class PokemonsService {
     // se obtiene una lista de pokemones
     return this.http.get<PokeAPIResponse>
     //este es el endpoint de la API que devuelve los pokemones
-    (`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=20`).pipe(//esto es un pipe que permite transformar la respuesta de la API
-      map(resp => {//esto es un map que permite transformar la respuesta de la API
-        const simplePokemons: SimplePokemon[] = resp.results.map(pokemon => ({//esto es un map que permite transformar la respuesta de la API
-          //se obtiene el id del pokemon a partir de la url
-          //la url tiene el formato https://pokeapi.co/api/v2/pokemon/1
-          //por lo tanto, se puede obtener el id del pokemon a partir de la url
-          //se utiliza el método split para dividir la url en partes y se obtiene la penúltima parte
-          //esto es porque la última parte es el nombre del pokemon
+    (`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=20`).pipe(
+      map(resp => {
+        const simplePokemons: SimplePokemon[] = resp.results.map(pokemon => ({
           id: pokemon.url.split('/').at(-2) ?? '',
-          name: pokemon.name//esto es el nombre del pokemon
+          name: pokemon.name
         }))
 
         return simplePokemons;
       }),
-      // tap(console.log)
     )
+  }
+
+  // este metodo carga un pokemon por su id
+  // se utiliza el id para obtener el pokemon de la API
+  // se devuelve un observable de tipo Pokemon (ya no SimplePokemon)
+  public loadPokemon(id: string){
+    return this.http.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`);
   }
 
 }

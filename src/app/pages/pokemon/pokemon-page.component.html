@@ -1,0 +1,29 @@
+<!-- si no hay pokemon cargado -->
+@if (pokemon() === null) {
+  <div class="flex justify-center mt-10">
+    <h1 class="text-4xl font-bold animate-ping">Esperando...</h1>
+  </div>
+} @else {
+  <!-- si ya existe el pokemon -->
+  <section class="flex flex-col items-center p-6">
+    
+    <!-- nombre --> 
+    <h1 class="text-4xl font-bold capitalize my-5">
+      {{ pokemon()!.name }}
+    </h1>
+
+    <!-- imagen -->
+    <img 
+      class="w-64 h-64 object-contain drop-shadow-lg"
+      [src]="pokemon()!.sprites.other?.['official-artwork']?.front_default"
+      [alt]="pokemon()!.name"
+    />
+
+    <!-- datos -->
+    <div class="mt-6 text-lg space-y-2">
+      <p><strong>Altura:</strong> {{ (pokemon()!.height ?? 0) / 10 }} m</p>
+      <p><strong>Peso:</strong> {{ (pokemon()!.weight ?? 0) / 10 }} kg</p>
+    </div>
+
+  </section>
+}
