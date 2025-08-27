@@ -7,8 +7,10 @@ export const routes: Routes = [
     },
     {
         path: 'pokemon/:id',
-        //  renderMode: 'server',
-        loadComponent: () => import('./pages/pokemon/pokemon-page.component').then(m => m.PokemonPageComponent)
+        loadComponent: () => import('./pages/pokemon/pokemon-page.component').then(m => m.PokemonPageComponent),
+        data: {
+            renderMode: 'server' // 👈 esto evita el error de Vercel
+        }
     },
     {
         path: 'about',
