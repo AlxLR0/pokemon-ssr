@@ -65,6 +65,7 @@ public loadPokemons(page = 0) {
       // console.log('on init');
       this.pokemons.set(pokemons); //se setea el valor de los pokemones
       this.isLoading.set(false); // Termina la carga
+      // window.scrollTo(0, 0);// esto sirve para que cuando el usuario cambie la pagina, automaticamente esta regreste hasta arriba y no se quede al fondo, evitando que el usuario tenga que bajar/cambiar de pagina/ subir / y volver a bajar para cambiar de nuevo y asi un ciclo.
     });
 }
 
