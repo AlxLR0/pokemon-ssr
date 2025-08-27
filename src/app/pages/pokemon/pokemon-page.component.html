@@ -20,7 +20,7 @@
     <div class="flex flex-col lg:flex-row items-center lg:items-start lg:justify-center gap-10 w-full max-w-6xl">
 
       <!-- Imagen principal sticky top-24-->
-      <div class="flex justify-center lg:w-1/2 " >
+      <div class="flex justify-center lg:w-1/2">
         <img 
           class="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 object-contain drop-shadow-2xl animate-fadeIn transition-transform duration-300 hover:rotate-3"
           [src]="pokemon()!.sprites.other?.['official-artwork']?.front_default"
@@ -62,8 +62,8 @@
 
         <!-- Info básica -->
         <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 shadow-lg w-full max-w-sm text-center lg:text-left animate-slideUp transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:from-indigo-500 hover:to-blue-600">
-          <p><strong>Altura:</strong> {{ (pokemon()!.height ?? 0) / 10 }} m</p>
-          <p><strong>Peso:</strong> {{ (pokemon()!.weight ?? 0) / 10 }} kg</p>
+          <p><strong>Altura:</strong> {{ pokemon()!.height / 10 }} m</p>
+          <p><strong>Peso:</strong> {{ pokemon()!.weight / 10 }} kg</p>
           <p><strong>Experiencia base:</strong> {{ pokemon()!.base_experience }}</p>
         </div>
 
@@ -106,7 +106,7 @@
 
 
         <!-- audio -->
-        <div class="w-full max-w-md bg-white/10 rounded-2xl p-6 shadow-lg animate-fadeIn ">
+        <div class="w-full max-w-md bg-white/10 rounded-2xl p-6 shadow-lg animate-fadeIn">
           <h2 class="text-xl sm:text-2xl font-bold mb-4 text-center lg:text-left">Sonido</h2>
           @if (pokemon()!.cries.latest) {
             <audio controls class="my-5">
